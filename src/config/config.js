@@ -32,13 +32,19 @@ const oDomains = {
     test: 'http://apirel.aorise.org/muem-duty/api',
     prod: ''
   },
-    // uem
-    rel: {
-      // dev: "http://10.116.64.154:8081/api",
-      dev: "http://apidev.aorise.org/muem-resource/api",
-      test: 'http://apirel.aorise.org/muem-resource/api',
-      prod: ''
-    },
+  // uem
+  rel: {
+    // dev: "http://10.116.64.154:8081/api",
+    dev: "http://apidev.aorise.org/muem-resource/api",
+    test: 'http://apirel.aorise.org/muem-resource/api',
+    prod: ''
+  },
+  // rms
+  rms: {
+    dev: "http://10.116.65.78:8084/api",
+    test: 'http://10.116.65.78:8084/api',
+    prod: ''
+  },
 };
 let ENV_API = process.env.VUE_APP_API;
 if (!ENV_API) { ENV_API = 'dev'; }

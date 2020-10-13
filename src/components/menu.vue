@@ -412,6 +412,39 @@ export default {
           });
         });
         this.reresourceMenuList = resourceMenu;
+        let powerObj={
+          uid:"4B63x7hOCXOgkVHu",
+          style:"iconzuoanxia",
+          resourceName:"系统管理",
+          children:[
+            {
+              routeName:"usermanage",
+              resourceName:"用户管理",
+              tipNum:0,
+            },
+            {
+              routeName:"rolemanage",
+              resourceName:"角色管理",
+              tipNum:0,
+            },
+            {
+              routeName:"userground",
+              resourceName:"用户组管理",
+              tipNum:0,
+            },
+            {
+              routeName:"jurismanage",
+              resourceName:"权限组管理",
+              tipNum:0,
+            },
+            {
+              routeName:"unitmanage",
+              resourceName:"单位管理",
+              tipNum:0,
+            },
+          ],
+        }
+        this.reresourceMenuList.push(powerObj)
       }
     },
     // 处理菜单
