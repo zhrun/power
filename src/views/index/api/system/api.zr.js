@@ -170,3 +170,89 @@ export function updateUsersList (data) {
     method: 'put'
   });
 }
+
+/**
+ * 获取用户列表数据
+ * @param {*} data
+ */
+export function getUserList (data) {
+  return request({
+    url: 'authServices/users',
+    params: data,
+    mode: 'auth',
+    method: 'get'
+  });
+}
+
+/**
+ * 创建用户组
+ * @param {*} data
+ */
+export function createUserGroups (data) {
+  return request({
+    url: 'authServices/userGroup',
+    data,
+    mode: 'auth',
+    method: 'post'
+  });
+}
+
+/**
+ * 判断用户角色是否重名
+ * @param {*} data
+ */
+export function judgeRoleName (data) {
+  return request({
+    url: 'authServices/userRoleRename',
+    params: data,
+    mode: 'auth',
+    method: 'get'
+  });
+}
+/**
+ * 编辑用户组
+ * @param {*} data
+ */
+export function updateUserGroups (data) {
+  return request({
+    url: 'authServices/userGroup',
+    data,
+    mode: 'auth',
+    method: 'put'
+  });
+}
+/**
+ * 判断用户组名称是否重复
+ * @param {*} data
+ */
+export function judgeUserGroup (data) {
+  return request({
+    url: 'authServices/userGroupRename',
+    params: data,
+    mode: 'auth',
+    method: 'get'
+  });
+}
+/**
+ * 删除用户组
+ * @param {*} data
+ */
+export function delUserGroup (params) {
+  return request({
+    url: 'authServices/userGroup/' + params.uid + '?proKey=' + params.proKey,
+    mode: 'auth',
+    method: 'delete'
+  });
+}
+/**
+ * 查询用户组
+ * @param {*} data
+ */
+export function getUserGroups (data) {
+  return request({
+    url: 'authServices/userGroups',
+    params: data,
+    mode: 'auth',
+    method: 'get'
+  });
+}
