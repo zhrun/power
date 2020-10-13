@@ -1,0 +1,140 @@
+.report-page {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  .content-wrap {
+    display: flex;
+    height: calc(100% - 50px);
+    // background-color: #f1f1f1;
+    .layout_column {
+      height: 100%;
+      flex: 1;
+      background-color: #fff;
+      &.report_column {
+        margin-right: 10px;
+        .top {
+          overflow: hidden;
+          border-bottom: 1px solid #f1f1f1;
+        }
+        .bottom {
+          padding-top: 20px;
+        }
+      }
+      .title_wrap {
+        display: flex;
+        margin-bottom: 20px;
+        line-height: 20px;
+        .tit {
+          font-size: 16px;
+          font-family: Microsoft YaHei;
+          font-weight: bold;
+          color: rgba(55, 118, 255, 1);
+          &.flx1 {
+            flex: 1;
+          }
+          .remark {
+            margin-left: 10px;
+            font-size: 12px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            font-style: normal;
+            color: rgba(153, 153, 153, 1);
+          }
+        }
+        .phone {
+          width: 150px;
+          font-size: 14px;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: rgba(153, 153, 153, 1);
+          text-align: right;
+        }
+        .overtime {
+          margin-left: 10px;
+          padding: 0 5px;
+          line-height: 20px;
+          border: 1px solid rgba(255, 0, 0, 1);
+          border-radius: 2px;
+          font-size: 12px;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: rgba(255, 0, 0, 1);
+        }
+      }
+      .reporter_wrap {
+        line-height: 20px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+        span {
+          
+          &:first-of-type {
+            margin-right: 20px;
+          }
+          &.status {
+            color: rgb(0,128,0);
+          }
+        }
+      }
+      .influence {
+        margin-bottom: 20px;
+        font-size:16px;
+        font-family:Microsoft YaHei;
+        font-weight:400;
+        color:rgba(255,0,0,1);
+        line-height:20px;
+      }
+      .info_list {
+        li {
+          margin-bottom: 20px;
+          line-height: 20px;
+          font-size: 14px;
+          .label {
+            color: #666;
+          }
+          .value {
+            color: #333;
+          }
+          img {
+            display: inline-block;
+            vertical-align: top;
+            // width: 100px;
+            // height: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+          }
+        }
+      }
+      .el-form {
+        .w50p {
+          display: inline-block;
+          vertical-align: top;
+          width: 50%;
+        }
+        .influence_item {
+          display: inline-block;
+          vertical-align: top;
+          width: 33.33%;
+          .el-input-number {
+            width: 100%;
+          }
+          .el-input-number__decrease,
+          .el-input-number__increase {
+            width: 20px;
+          }
+        }
+      }
+      .hr_line {
+        border-bottom: 1px solid #F1F1F1;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .el-scrollbar__wrap {
+    padding: 20px;
+    overflow-x: hidden;
+  }
+}

@@ -1,0 +1,65 @@
+{
+	"code": "00000000",
+	"viewMsg": null,
+	"debugMsg": null,
+	"timestamp": "1597050280099",
+	"data": {
+		"total": 3,
+		"list": [
+			{
+				"uid": "1",
+				"resourceCode": "43B0501010301000001",
+				"resourceName": "防火服",
+				"measuring_unit": "套",
+				"model": "1x1",
+				"brand": "捷晟",
+				"totalStorage": "1000000",
+				"availableStorage": "100000",
+				"maxStorageValue": "200000",
+				"minStorageValue": "1000"
+			},
+			{
+				"uid": "1",
+				"resourceCode": "43B0501010301000002",
+				"resourceName": "防毒面具",
+				"measuring_unit": "个",
+				"model": "1x1",
+				"brand": "捷晟",
+				"totalStorage": "1000000",
+				"availableStorage": "100000",
+				"maxStorageValue": "200000",
+				"minStorageValue": "1000"
+			},
+			{
+				"uid": "1",
+				"resourceCode": "43B0501010301000003",
+				"resourceName": "测温计(仪)",
+				"measuring_unit": "个",
+				"model": "1x1",
+				"brand": "捷晟",
+				"totalStorage": "1000000",
+				"availableStorage": "100000",
+				"maxStorageValue": "200000",
+				"minStorageValue": "1000"
+			}
+		],
+		"pageNum": 1,
+		"pageSize": 10,
+		"size": 10,
+		"startRow": 1,
+		"endRow": 10,
+		"pages": 1,
+		"prePage": 0,
+		"nextPage": 0,
+		"isFirstPage": true,
+		"isLastPage": true,
+		"hasPreviousPage": false,
+		"hasNextPage": false,
+		"navigatePages": 8,
+		"navigatepageNums": [1],
+		"navigateFirstPage": 1,
+		"navigateLastPage": 1,
+		"lastPage": 1,
+		"firstPage": 1
+	}
+}

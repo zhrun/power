@@ -1,0 +1,7 @@
+{
+  "code": "10060004",
+  "viewMsg": null,
+  "debugMsg": "服务器内部错误:HV000030: No validator could be found for constraint 'com.aorise.common.validator.IntegerRangeConstraint' validating type 'java.math.BigDecimal'. Check configuration for 'minWarningValue'",
+  "timestamp": "1597306948652",
+  "data": null
+}

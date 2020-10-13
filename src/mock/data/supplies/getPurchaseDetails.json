@@ -1,0 +1,40 @@
+{
+	"code": "00000000",
+	"viewMsg": null,
+	"debugMsg": null,
+	"timestamp": "1597038607339",
+	"data": {
+		"uid": "1",
+		"statusFlag": 1,
+		"purchaseTypeFlag": 1,
+		"purchaseCode": "CG202007090001",
+		"purchasePlanUid": "CJ202007090001",
+		"purchasePlanName": "2020年省级采购救灾物资明细表",
+		"supplierUid": "22",
+		"supplierName": "供应商1",
+		"contactPerson": "联系人",
+		"contactPhone": "139788879977",
+		"deliveryDate": "2020-08-13",
+		"purchaser": "张三",
+		"warehouseName": "仓库1",
+		"warehousingDate": "2020-08-13",
+		"createTime": "2020-08-13",
+		"updateTime": "2020-08-13",
+		"resourceList": [
+			{
+				"uid": "采购计划物资uid",
+				"purchasePlanUid": "采购计划uid",
+				"historyCategoryUid": "采购计划物资分类uid",
+				"resourceName": "采购计划物资名称",
+				"resourceCode": "采购计划物资编号",
+				"model": "采购计划物资规格型号",
+				"brand": "品牌",
+				"supplierName": "供应商",
+				"measuringUnit": "个",
+				"warehousingAccount": 1000,
+				"purchaseNum": 1300,
+				"purchaseUnitPrice": 0.52
+			}
+		]
+	}
+}

@@ -1,0 +1,109 @@
+{
+	"code": "00000000",
+	"viewMsg": null,
+	"debugMsg": null,
+	"timestamp": "1597050280099",
+	"data": {
+		"total": 10,
+		"list": [
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防火服",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "灭火器",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			},
+			{
+				"resourceCode": "43B050101030120200",
+				"resourceName": "防毒面具",
+				"model": "1x1",
+				"brand": "捷晟",
+				"storage": "10000",
+				"measuringUnit": "个"
+			}
+		],
+		"pageNum": 1,
+		"pageSize": 10,
+		"size": 10,
+		"startRow": 1,
+		"endRow": 10,
+		"pages": 1,
+		"prePage": 0,
+		"nextPage": 0,
+		"isFirstPage": true,
+		"isLastPage": true,
+		"hasPreviousPage": false,
+		"hasNextPage": false,
+		"navigatePages": 8,
+		"navigatepageNums": [1],
+		"navigateFirstPage": 1,
+		"navigateLastPage": 1,
+		"lastPage": 1,
+		"firstPage": 1
+	}
+}

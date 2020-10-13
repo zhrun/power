@@ -1,0 +1,209 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+  
+   /* @import '../font/iconfont.css'; */
+   html, body, div, span, applet, object, iframe,
+   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+   a, abbr, acronym, address, big, cite, code,
+   del, dfn, em, img, ins, kbd, q, s, samp,
+   small, strike, strong, sub, sup, tt, var,
+   b, u, i, center,
+   dl, dt, dd, ol, ul, li,
+   fieldset, form, label, legend,
+   table, caption, tbody, tfoot, thead, tr, th, td,
+   article, aside, canvas, details, embed, 
+   figure, figcaption, footer, header, hgroup, 
+   menu, nav, output, ruby, section, summary,
+   time, mark, audio, video{
+     margin: 0;
+     padding: 0;
+     border: 0;
+   }
+   body{
+     font-family: "Microsoft YaHei","微软雅黑","PingFang SC","Hiragino Sans GB",sans-serif; 
+     font-size: 14px; 
+     font-weight:normal;
+     color:#333; 
+     -webkit-font-smoothing: antialiased; 
+     width: 100%;
+     height: 100%;
+  }
+   /* HTML5 display-role reset for older browsers */
+   article, aside, details, figcaption, figure, 
+   footer, header, hgroup, menu, nav, section{
+     display: block;
+   }
+   ol, ul, li{
+     list-style: none;
+   }
+   blockquote, q{
+     quotes: none;
+   }
+   blockquote:before, blockquote:after,
+   q:before, q:after{
+     content: '';
+     content: none;
+   }
+   table{
+     border-collapse: collapse;
+     border-spacing: 0;
+   }
+    
+   /* custom */
+   a{
+     text-decoration: none;
+     color: #000;
+   }
+  
+   /*清除浮动*/
+   .clearfix:before,
+   .clearfix:after{
+     content: " ";
+     display: inline-block;
+     height: 0;
+     clear: both;
+     visibility: hidden;
+   }
+   .clearfix{
+     *zoom: 1;
+     z-index: 1;
+   }
+  
+   .fl {
+     float: left;
+   }
+  
+   .fr {
+     float: right;
+   }
+    
+   /*隐藏*/
+   .dn{
+     display: none;
+   }
+
+  /* 外边距 */
+  .mtop20 {
+    margin-top: 20px;
+  }
+  
+  .padb100 {
+    padding-bottom: 100px;
+  }
+  
+
+  /****数据统计分析图表样式***/
+.e_stat_tb_ld1 {
+  width: 200px;
+  left: auto !important;
+  right: 40px !important;
+  top: 5% !important;
+  overflow: hidden !important;
+}
+.e_stat_tb_ld1 .g2-legend-list {
+  overflow: hidden;
+  width: 200px;
+}
+.e_stat_tb_ld1 .g2-legend-list-item {
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  width: 50%; float: left;
+  padding: 5px;
+}
+.e_stat_tb_ld1 .g2-legend-list-item > div {
+  border-radius: 4px;
+  border: 1px solid #F2F2F2;
+  background-color: #fff;
+  padding: 5px 10px;
+  box-shadow: 0px 1px 12px 0px rgba(114,114,114,0.1);
+  border-radius: 3px;
+}
+.e_stat_tb_ld1 .g2-legend-list-item > div > div {
+  font-weight: bold;
+  font-size:22px;
+  color: #333333;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  padding-left: 20px;
+}
+.e_stat_tb_ld1 .g2-legend-list-item > div > div > i {
+  display: inline-block;
+  position: absolute; top: 6px; left: 0px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  /* background-color: rgba(0, 162, 255, 0.4); */
+}
+.e_stat_tb_ld1 .g2-legend-list-item > div > div > i > i {
+  display: inline-block;
+  position: absolute; top: 4px; left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  /* background-color: rgba(0, 162, 255, 1); */
+}
+.e_stat_tb_ld1 .g2-legend-list-item > div > p {
+  color: #999;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+.e_stat_tb_ld4 {
+  left: auto !important;
+  right: 30px !important;
+  width: 200px !important;
+  top: 25% !important;
+}
+.e_stat_tb_ld4 .g2-legend-list-item {
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 5px;
+  border-bottom: 1px solid #F2F2F2;
+}
+.e_stat_tb_ld4 .g2-legend-list-item:last-child {
+  border-bottom: 0;
+}
+.e_stat_tb_ld4 .g2-legend-list-item > div {
+  position: relative;
+  height: 60px;
+  padding-left: 10px;
+}
+.e_stat_tb_ld4 .g2-legend-list-item > div > span {
+  position: absolute; top: 10px; left: 0;
+  width: 4px; height: 30px;
+  border-radius: 2px;
+}
+.e_stat_tb_ld4 .g2-legend-list-item > div > i {
+  position: absolute; top: 17px; right: 5px;
+  /* width: 34px; height: 19px; */
+  /* background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  background-image: url(../img/stat/stat-052.png); */
+}
+.e_stat_tb_ld4 .g2-legend-list-item > div > div > div {
+  color: #999;
+  height: 16px; line-height: 16px;
+}
+.e_stat_tb_ld4 .g2-legend-list-item > div > div > p {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 7px;
+  height: 27px; line-height: 20px;
+}
+
+/* th css style create by th */
+html {
+  font-size: 100px;
+}
+@media screen and (min-width: 960px) and (max-width: 1119px) {html {font-size: 60px;}}
+@media screen and (min-width: 1200px) and (max-width: 1439px) {html {font-size: 70px;}}
+@media screen and (min-width: 1440px) and (max-width: 1679px) {html {font-size: 80px;}}
+@media screen and (min-width: 1680px) and (max-width: 1919px) {html {font-size: 90px;}}
+@media screen and (min-width: 1920px) {html {font-size: 100px;} }

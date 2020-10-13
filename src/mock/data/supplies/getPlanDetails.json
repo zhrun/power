@@ -1,0 +1,67 @@
+{
+	"code": "00000000",
+	"viewMsg": null,
+	"debugMsg": null,
+	"timestamp": "1597038607339",
+	"data": {
+		"uid": "1",
+		"statusFlag": 2,
+		"createTime": "2020-07-01",
+		"updateTime": "2020-07-02",
+		"purchasePlanCode": "CJ202007010001",
+		"purchasePlanName": "2020年省级采购救灾物资明细表",
+		"purchaseStartDate": "2020-07-29",
+		"purchaseEndDate": "2020-07-30",
+		"publishDate": "2020-07-29",
+		"finishDate": "2020-07-29",
+		"totle": "110,000,000元",
+		"purchaseList": ["CG202007090003", "CG202007090001"],
+		"resourceList": [
+			{
+				"uid": "采购计划物资uid",
+				"purchasePlanUid": "采购计划uid",
+				"historyCategoryUid": "采购计划物资分类uid",
+				"resourceName": "采购计划物资名称",
+				"resourceCode": "采购计划物资编号",
+				"model": "采购计划物资规格型号",
+				"brand": "品牌",
+				"supplierUid": "222",
+				"supplierName": "供应商",
+				"measuringUnit": "个",
+				"warehousingAccount": 1000,
+				"purchaseNum": 1300,
+				"purchaseUnitPrice": 0.52
+			},
+			{
+				"uid": "采购计划物资uid",
+				"purchasePlanUid": "采购计划uid",
+				"historyCategoryUid": "采购计划物资分类uid",
+				"resourceName": "采购计划物资名称",
+				"resourceCode": "采购计划物资编号",
+				"model": "采购计划物资规格型号",
+				"brand": "品牌",
+				"supplierUid": "222",
+				"supplierName": "供应商",
+				"measuringUnit": "个",
+				"warehousingAccount": 1000,
+				"purchaseNum": 1300,
+				"purchaseUnitPrice": 0.52
+			},
+			{
+				"uid": "采购计划物资uid",
+				"purchasePlanUid": "采购计划uid",
+				"historyCategoryUid": "采购计划物资分类uid",
+				"resourceName": "采购计划物资名称",
+				"resourceCode": "采购计划物资编号",
+				"model": "采购计划物资规格型号",
+				"brand": "品牌",
+				"supplierUid": "111",
+				"supplierName": "供应商3",
+				"measuringUnit": "个",
+				"warehousingAccount": 1000,
+				"purchaseNum": 1300,
+				"purchaseUnitPrice": 0.52
+			}
+		]
+	}
+}

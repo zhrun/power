@@ -1,0 +1,68 @@
+{
+	"code": "00000000",
+	"viewMsg": null,
+	"debugMsg": null,
+	"timestamp": "1597050280099",
+	"data": {
+		"total": 3,
+		"list": [
+			{
+				"uid": "1",
+				"purchaseCode": "CG202007090003",
+				"purchaseTypeFlag": 1,
+				"purchasePlanUid": "22",
+				"purchasePlanName": "2020年省级采购救灾物资明细表",
+				"supplierName": "xxxxxx",
+				"deliveryDate": "2019-12-30",
+				"warehouseName": "仓库1",
+				"categoryCount": "10",
+				"totalAmount": "100000",
+				"statusFlag": 1
+			},
+			{
+				"uid": "2",
+				"purchaseCode": "CG202007090004",
+				"purchaseTypeFlag": 1,
+				"purchasePlanUid": "22",
+				"purchasePlanName": "2020年省级采购救灾物资明细表",
+				"supplierName": "xxxxxx",
+				"deliveryDate": "2019-12-30",
+				"warehouseName": "仓库1",
+				"categoryCount": "10",
+				"totalAmount": "100000",
+				"statusFlag": 2
+			},
+			{
+				"uid": "3",
+				"purchaseCode": "CG202007090005",
+				"purchaseTypeFlag": 2,
+				"purchasePlanUid": "22",
+				"purchasePlanName": "2020年省级采购救灾物资明细表",
+				"supplierName": "xxxxxx",
+				"deliveryDate": "2019-12-30",
+				"warehouseName": "仓库1",
+				"categoryCount": "10",
+				"totalAmount": "100000",
+				"statusFlag": 3
+			}
+		],
+		"pageNum": 1,
+		"pageSize": 10,
+		"size": 10,
+		"startRow": 1,
+		"endRow": 10,
+		"pages": 1,
+		"prePage": 0,
+		"nextPage": 0,
+		"isFirstPage": true,
+		"isLastPage": true,
+		"hasPreviousPage": false,
+		"hasNextPage": false,
+		"navigatePages": 8,
+		"navigatepageNums": [1],
+		"navigateFirstPage": 1,
+		"navigateLastPage": 1,
+		"lastPage": 1,
+		"firstPage": 1
+	}
+}

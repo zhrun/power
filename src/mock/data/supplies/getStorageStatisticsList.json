@@ -1,0 +1,67 @@
+{
+  "code": "00000000",
+  "viewMsg": null,
+  "debugMsg": null,
+  "timestamp": "1597996623082",
+  "data": {
+    "total": 2,
+    "list": [
+      {
+        "uid": "7wkWdEapwz9nEPoLsMqpQt",
+        "resourceName": "灭火器00",
+        "resourceCode": "WZ20200817000030",
+        "assetTypeFlagName": null,
+        "levelTypeFlagName": null,
+        "catalogTypeFlagName1": null,
+        "catalogTypeFlagName2": null,
+        "catalogTypeFlagName3": null,
+        "catalogTypeFlagName4": null,
+        "measuringUnitName": null,
+        "model": "tes",
+        "brand": "test",
+        "storage": null,
+        "availableStorage": null,
+        "maxWarningValue": 1000,
+        "minWarningValue": 20
+      },
+      {
+        "uid": "79DH0TxFFU1HNr5aKAl40u",
+        "resourceName": "防火服",
+        "resourceCode": "WZ20200817000052",
+        "assetTypeFlagName": null,
+        "levelTypeFlagName": null,
+        "catalogTypeFlagName1": null,
+        "catalogTypeFlagName2": null,
+        "catalogTypeFlagName3": null,
+        "catalogTypeFlagName4": null,
+        "measuringUnitName": null,
+        "model": "规格型号规格型号规格型号规格型号规格型号",
+        "brand": "品牌名称品牌名称品牌名称品牌称",
+        "storage": null,
+        "availableStorage": null,
+        "maxWarningValue": 90,
+        "minWarningValue": 10
+      }
+    ],
+    "pageNum": 1,
+    "pageSize": 2,
+    "size": 2,
+    "startRow": 0,
+    "endRow": 1,
+    "pages": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ],
+    "navigateFirstPage": 1,
+    "navigateLastPage": 1,
+    "firstPage": 1,
+    "lastPage": 1
+  }
+}
