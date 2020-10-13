@@ -441,22 +441,24 @@ export default {
 					this.loginBtnLoading = false
 				}
 				localStorage.removeItem('ChildrenNum')
-				let cparams = {
-					parentUid: JSON.parse(localStorage.getItem('vis_user_info'))
-						.rmsUnitDto.uid,
-					unitType: 1,
-				}
-				querySortList(cparams)
-					.then(res => {
-						if (res && res.code === '00000000') {
-							if (res.data && res.data.length > 0) {
-								localStorage.setItem('ChildrenNum', res.data.length)
+				if( JSON.parse(localStorage.getItem('vis_user_info')).rmsUnitDto){
+					let cparams = {
+						parentUid: JSON.parse(localStorage.getItem('vis_user_info'))
+							.rmsUnitDto.uid,
+						unitType: 1,
+					}
+					querySortList(cparams)
+						.then(res => {
+							if (res && res.code === '00000000') {
+								if (res.data && res.data.length > 0) {
+									localStorage.setItem('ChildrenNum', res.data.length)
+								}
 							}
-						}
-					})
-					.catch(error => {
-						console.log('接口报错=>', error)
-					})
+						})
+						.catch(error => {
+							console.log('接口报错=>', error)
+						})
+				}
 			} catch (error) {
 				console.log(error)
 				this.loginBtnLoading = false
@@ -520,6 +522,8 @@ export default {
 					// }
 					this.$message.success('登录成功')
 					this.getDictTypeData()
+					console.log('_permissions',_permissions);
+					
 					this.$router.push({ name: _permissions[0].routeName })
 				}
 			} catch (err) {

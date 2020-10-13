@@ -88,110 +88,119 @@ export default {
         }
       })
     },
+    treeData(data) {
+        let cloneData = JSON.parse(JSON.stringify(data))
+        return cloneData.filter(parent => {  //AREA_CODE 代表id   PID代表 父级 pid
+            let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
+            branchArr.length > 0 ? parent['children'] = branchArr : '';
+            return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
+        })
+    },
     //初始化数据 
     onSeeLimit (obj) { // 查看权限
-       console.log(obj, 111)
+      //  console.log(obj, 111)
       this.seeLimitObj.A = [];
       this.seeLimitObj.B = [];
       this.seeLimitObj.C = [];
       this.seeLimitObj.D = [];
       this.seeLimitObj.E = [];
+       this.seeLimitObj.A=this.treeData(obj.roleAuthList)
       // this.seeLimitItem = Object.assign({}, obj);
-      obj.roleAuthList.forEach(item => {
-        if (item.resourceLayer == 2) {
-          this.seeLimitObj.A.push({
-            uid: item.uid,
-            resourceName: item.resourceName,
-            isShow: false,
-            children: []
-          });
-        }
-        if (item.resourceLayer == 3) {
-          this.seeLimitObj.B.push({
-            uid: item.uid,
-            parentUid: item.parentUid,
-            resourceName: item.resourceName,
-            isShow: false,
-            children: []
-          });
-        }
-        if (item.resourceLayer == 4) {
-          this.seeLimitObj.C.push({
-            uid: item.uid,
-            parentUid: item.parentUid,
-            resourceName: item.resourceName,
-            isShow: false,
-            children: []
-          });
-        }
-        if (item.resourceLayer == 5) {
-          this.seeLimitObj.D.push({
-            uid: item.uid,
-            parentUid: item.parentUid,
-            resourceName: item.resourceName,
-            isShow: false,
-            children: []
-          });
-        }
-      });
-      // 2
-      this.seeLimitObj.A.forEach(a => {
-        this.seeLimitObj.B.forEach(b => {
-          if (a.uid === b.parentUid) {
-            a.children.push(b);
-          }
-        })
-      })
-      // 3
-      this.seeLimitObj.A.forEach(a => {
-        if (a.children && a.children.length > 0) {
-          a.children.forEach(b => {
-            this.seeLimitObj.C.forEach(c => {
-              if (b.uid === c.parentUid) {
-                b.children.push(c);
-              }
-            })
-          })
-        }
-      })
-      // 4
-      this.seeLimitObj.A.forEach(a => {
-        if (a.children && a.children.length > 0) {
-          a.children.forEach(b => {
-            if (b.children && b.children.length > 0) {
-              b.children.forEach(c => {
-                this.seeLimitObj.D.forEach(d => {
-                  if (c.uid === d.parentUid) {
-                    c.children.push(d);
-                  }
-                })
-              })
-            }
-          })
-        }
-      })
-      // 5
-      this.seeLimitObj.A.forEach(a => {
-        if (a.children && a.children.length > 0) {
-          a.children.forEach(b => {
-            if (b.children && b.children.length > 0) {
-              b.children.forEach(c => {
-                if (c.children && c.children.length > 0) {
-                  c.children.forEach(d => {
-                    this.seeLimitObj.E.forEach(e => {
-                      if (d.uid === e.parentUid) {
-                        d.children.push(e);
-                      }
-                    })
-                  })
-                }
-              })
-            }
-          })
-        }
-      })
-       console.log(this.seeLimitObj.A);
-      this.seeLimitDialogVisible = true;
+      // obj.roleAuthList.forEach(item => {
+      //   if (item.resourceLayer == 2) {
+      //     this.seeLimitObj.A.push({
+      //       uid: item.uid,
+      //       resourceName: item.resourceName,
+      //       isShow: false,
+      //       children: []
+      //     });
+      //   }
+      //   if (item.resourceLayer == 3) {
+      //     this.seeLimitObj.B.push({
+      //       uid: item.uid,
+      //       parentUid: item.parentUid,
+      //       resourceName: item.resourceName,
+      //       isShow: false,
+      //       children: []
+      //     });
+      //   }
+      //   if (item.resourceLayer == 4) {
+      //     this.seeLimitObj.C.push({
+      //       uid: item.uid,
+      //       parentUid: item.parentUid,
+      //       resourceName: item.resourceName,
+      //       isShow: false,
+      //       children: []
+      //     });
+      //   }
+      //   if (item.resourceLayer == 5) {
+      //     this.seeLimitObj.D.push({
+      //       uid: item.uid,
+      //       parentUid: item.parentUid,
+      //       resourceName: item.resourceName,
+      //       isShow: false,
+      //       children: []
+      //     });
+      //   }
+      // });
+      // // 2
+      // this.seeLimitObj.A.forEach(a => {
+      //   this.seeLimitObj.B.forEach(b => {
+      //     if (a.uid === b.parentUid) {
+      //       a.children.push(b);
+      //     }
+      //   })
+      // })
+      // // 3
+      // this.seeLimitObj.A.forEach(a => {
+      //   if (a.children && a.children.length > 0) {
+      //     a.children.forEach(b => {
+      //       this.seeLimitObj.C.forEach(c => {
+      //         if (b.uid === c.parentUid) {
+      //           b.children.push(c);
+      //         }
+      //       })
+      //     })
+      //   }
+      // })
+      // // 4
+      // this.seeLimitObj.A.forEach(a => {
+      //   if (a.children && a.children.length > 0) {
+      //     a.children.forEach(b => {
+      //       if (b.children && b.children.length > 0) {
+      //         b.children.forEach(c => {
+      //           this.seeLimitObj.D.forEach(d => {
+      //             if (c.uid === d.parentUid) {
+      //               c.children.push(d);
+      //             }
+      //           })
+      //         })
+      //       }
+      //     })
+      //   }
+      // })
+      // // 5
+      // this.seeLimitObj.A.forEach(a => {
+      //   if (a.children && a.children.length > 0) {
+      //     a.children.forEach(b => {
+      //       if (b.children && b.children.length > 0) {
+      //         b.children.forEach(c => {
+      //           if (c.children && c.children.length > 0) {
+      //             c.children.forEach(d => {
+      //               this.seeLimitObj.E.forEach(e => {
+      //                 if (d.uid === e.parentUid) {
+      //                   d.children.push(e);
+      //                 }
+      //               })
+      //             })
+      //           }
+      //         })
+      //       }
+      //     })
+      //   }
+      // })
+      //  console.log(this.seeLimitObj.A);
+      // this.seeLimitDialogVisible = true;
     },
    
   }
