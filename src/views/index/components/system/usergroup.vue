@@ -141,7 +141,7 @@ export default {
      getUserList(){
        let d={
           "where.proKey":this.proKey,
-          "pageNum":0
+          "pageNum":0 
         }
  
       getUserList(d).then(res=>{
