@@ -687,10 +687,10 @@ export const accMul = (arg1, arg2, fix) => {
 
 export const treeData=  (data)=> {
 	let cloneData = JSON.parse(JSON.stringify(data))
-	return cloneData.filter(parent => {  //AREA_CODE 代表id   PID代表 父级 pid
+	return cloneData.filter(parent => {  //uid 代表id   parentUid代表父级 id
 		let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
 		branchArr.length > 0 ? parent['children'] = branchArr : '';
-		return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
-		// return parent['resourceName'] == "根节点"
+		// return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
+		return parent['resourceLayer'] == 1
 	})
   }

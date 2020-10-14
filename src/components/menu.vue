@@ -14,6 +14,7 @@
         <img :src="mainControlNum==2? tufajiebao: tufajiebaoD" alt="">
         <span :style="mainControlNum==2?'color:#ffffff':'color:#9d9ff6'">突发接报</span>
       </div> -->
+      <template v-if="menuTopList && menuTopList.length>0">
       
       <div
         v-for="item in menuTopList"
@@ -28,6 +29,7 @@
         <img :src="mainControlFlag==item.mainControlNum? imgList[item.imgName]: imgList[item.imgName + 'D']" alt="">
         <span :style="mainControlFlag==item.mainControlNum?'color:#ffffff':'color:#9d9ff6'">{{item.name}}</span>
       </div>
+      </template>
       <!-- <div class="menu-bottom" :class="mainControlFlag==menuTopList[menuTopList.length-1].mainControlNum?'right-top-radius':''"></div> -->
       <!-- <div class="jiebao"></div> -->
     </div>
@@ -38,7 +40,9 @@
             <p class="main-title">应急信息化综合平台</p>
             <p class="pri-title">{{unitName}}</p>
           </div>
-          <el-menu :default-active="activeMenuName" :unique-opened="true" v-show="mainControlFlag==0">
+          <el-menu :default-active="activeMenuName" :unique-opened="true"  v-show="mainControlFlag==0">
+            
+            <template v-if="powerList && powerList.length>0">
             <div v-for="(item, index) in powerList" :key="'powerList' + index">
               <el-submenu v-if="item.children && item.children.length > 0" :index="item.uid">
                 <template slot="title">
@@ -58,6 +62,7 @@
                 <span slot="title">{{item.resourceName}}</span>
               </el-menu-item>
             </div>
+            </template>
           </el-menu>
           <el-menu :default-active="activeMenuName" :unique-opened="true" v-show="mainControlFlag==1">
             <div v-for="(item, index) in dutyMenuList" :key="'dutyMenu' + index">
@@ -146,44 +151,7 @@ export default {
   data() {
     return {
       activeMenuName: "",
-      powerList:[{
-        resourceName:'系统管理',
-        uid:'power1',
-        style:'',
-        children:[{
-          resourceName:'用户管理',
-          routeName:'systemUser',
-          uid:'power1-1',
-          style:'',
-        },{
-          resourceName:'资源管理',
-          routeName:'systemResource',
-          uid:'power1-2',
-          style:'',
-        },
-        {
-          resourceName:'角色管理',
-          routeName:'systemRole',
-          uid:'power1-3',
-          style:'',
-        },
-        {
-          resourceName:'接口管理',
-          routeName:'systemInterface',
-          uid:'power1-4',
-          style:'',
-        },{
-          resourceName:'用户组管理',
-          routeName:'systemUsergroup',
-          uid:'power1-5',
-          style:'',
-        },{
-          resourceName:'权限组管理',
-          routeName:'systempermission',
-          uid:'power1-6',
-          style:'',
-        }]
-      }],
+      powerList:[],
       reportMenuList: [],
       reresourceMenuList: [],
       dutyMenuList: [],
@@ -200,40 +168,7 @@ export default {
         jiuyuanziyuanD: require("../assets/img/jiuyuanziyuan-d.png"),
       },
       unitName: "",
-      menuTopList: [
-        {
-          name: "系统管理",
-          menuListName: 'dutyMenuList',
-          mainControlNum: 0,
-          imgName: "zhibanzhishou",
-          groupId: 'duty',
-          isShow:true,
-        },
-        {
-          name: "值班值守",
-          menuListName: 'dutyMenuList',
-          mainControlNum: 1,
-          imgName: "zhibanzhishou",
-          groupId: 'duty',
-          isShow:true,
-        },
-        {
-          name: "突发接报",
-          menuListName: 'reportMenuList',
-          mainControlNum: 2,
-          imgName: "tufajiebao",
-          groupId: 'report',
-          isShow:true,
-        },
-        {
-          name: "救援资源",
-          menuListName: 'reresourceMenuList',
-          mainControlNum: 3,
-          imgName: "jiuyuanziyuan",
-          groupId: 'resource',
-          isShow:true,
-        },
-      ]
+      menuTopList: []
     };
   },
   mounted() {
@@ -350,102 +285,64 @@ export default {
         this.$router.push({ name: "login" });
         return;
       }
-      // 根据权限菜单中第一个的groupId决定默认进入哪个子系统
-      this.mainControlFlag = this.menuTopList.find(({groupId}) => groupId === permissions[0].groupId).mainControlNum
-      
-      // 值班值守menu
-      const dutyPermissions = permissions.filter(({groupId}) => groupId === 'duty');
-      if (dutyPermissions.length) {
-        let _list = [];
-        dutyPermissions.forEach((item) => {
-          if (item.resourceLayer == 1) {
-            _list.push(item);
-          }
-        });
-        _list.forEach((one) => {
-          one.children = [];
-          dutyPermissions.forEach((two) => {
-            if (two.resourceLayer == 2 && two.parentUid == one.uid) {
-              one.children.push(two);
-            }
-          });
-        });
-        this.dutyMenuList = _list;
+      // permissions.forEach(v=>{
+      //   if(v.resourceLayer==1){
+      //     console.log('vv',v);
+      //   }
         
-      }
-
-      // 突发接报menu
-      const reportPermissions = permissions.filter(({groupId}) => groupId === 'report');
-      if (reportPermissions.length) {
-        let _menu = [];
-        reportPermissions.forEach((item) => {
-          if (item.resourceLayer == 2) {
-            _menu.push(item);
-          }
-        });
-        _menu.forEach((one) => {
-          one.children = [];
-          reportPermissions.forEach((two) => {
-            if (two.resourceLayer == 3 && two.parentUid == one.uid) {
-              one.children.push(two);
-            }
-          });
-        });
-        this.reportMenuList = _menu;
-      }
-
-      // 救援资源menu
-      const resourcePermissions = permissions.filter(({groupId}) => groupId === 'resource')
-      if (resourcePermissions.length) {
-        let resourceMenu = []
-        resourcePermissions.forEach((item) => {
-          if (item.resourceLayer == 3) {
-            resourceMenu.push(item);
-          }
-        });
-        resourceMenu.forEach((one) => {
-          one.children = [];
-          resourcePermissions.forEach((two) => {
-            if (two.resourceLayer == 4 && two.parentUid == one.uid) {
-              one.children.push(two);
-            }
-          });
-        });
-        this.reresourceMenuList = resourceMenu;
-        let powerObj={
-          uid:"4B63x7hOCXOgkVHu",
-          style:"iconzuoanxia",
-          resourceName:"系统管理",
-          children:[
-            {
-              routeName:"usermanage",
-              resourceName:"用户管理",
-              tipNum:0,
-            },
-            {
-              routeName:"rolemanage",
-              resourceName:"角色管理",
-              tipNum:0,
-            },
-            {
-              routeName:"userground",
-              resourceName:"用户组管理",
-              tipNum:0,
-            },
-            {
-              routeName:"jurismanage",
-              resourceName:"权限组管理",
-              tipNum:0,
-            },
-            {
-              routeName:"unitmanage",
-              resourceName:"单位管理",
-              tipNum:0,
-            },
-          ],
+      // })
+      var treePermissions = treeData(permissions)
+      // console.log('vv',treePermissions);
+      treePermissions.forEach(v=>{
+        if(v.resourceName=='系统管理'){
+           this.powerList = [...v.children];
+           this.menuTopList.push({
+            name: "系统管理",
+            menuListName: 'sysMenuList',
+            mainControlNum: 0,
+            imgName: "zhibanzhishou",
+            groupId: 'duty',
+            isShow:true,
+          })
+        }else if(v.resourceName=='值班值守'){
+          this.dutyMenuList= [...v.children];
+          this.menuTopList.push({
+            name: "值班值守",
+            menuListName: 'dutyMenuList',
+            mainControlNum: 1,
+            imgName: "zhibanzhishou",
+            groupId: 'duty',
+            isShow:true,
+          })
+        }else if(v.resourceName=='突发接报'){
+          this.reportMenuList =  [...v.children];
+          this.menuTopList.push({
+            name: "突发接报",
+            menuListName: 'reportMenuList',
+            mainControlNum: 2,
+            imgName: "tufajiebao",
+            groupId: 'report',
+            isShow:true,
+          })
+        }else if(v.resourceName=='救援资源'){
+          // this.reresourceMenuList =  [...v.children];
+          v.children.forEach(b=>{
+            this.reresourceMenuList.push.apply(this.reresourceMenuList,b.children)
+          })
+          this.menuTopList.push({
+            name: "救援资源",
+            menuListName: 'reresourceMenuList',
+            mainControlNum: 3,
+            imgName: "jiuyuanziyuan",
+            groupId: 'resource',
+            isShow:true,
+          })
         }
-        this.reresourceMenuList.push(powerObj)
-      }
+      })
+      // 根据权限菜单中第一个的groupId决定默认进入哪个子系统
+      // this.mainControlFlag = this.menuTopList.find(({groupId}) => groupId === permissions[0].groupId).mainControlNum
+      this.mainControlFlag = this.menuTopList[0].mainControlNum
+      
     },
     // 处理菜单
     changeActiveMenu(oRoute) {

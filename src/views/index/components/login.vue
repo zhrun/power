@@ -510,8 +510,10 @@ export default {
 					} else {
 						newJson = data
 					}
-					// 过滤没有配置路由name的数据
-					_remove(newJson, ({ routeName }) => !routeName)
+					// 过滤没有配置路由name的数据 因一级子系统菜单都没有路由所以不过滤
+					// _remove(newJson, ({ routeName }) => !routeName)
+					console.log('newJson',newJson);
+					
 					localStorage.setItem('permission', JSON.stringify(newJson))
 					let _permissions = data
 					// if (!_permissions || _permissions.length < 1) {
@@ -522,9 +524,9 @@ export default {
 					// }
 					this.$message.success('登录成功')
 					this.getDictTypeData()
-					console.log('_permissions',_permissions);
-					
-					this.$router.push({ name: _permissions[0].routeName })
+					// console.log('_permissions',_permissions);
+					let a = _permissions.filter(v=>v.routeName)
+					this.$router.push({ name: a[0].routeName })
 				}
 			} catch (err) {
 				console.log(err)

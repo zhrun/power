@@ -79,7 +79,7 @@
           <el-input v-model="formData.userMobile" autocomplete="off" class="wid20"></el-input>
         </el-form-item>
         <el-form-item label="角色" prop="roleUid"  label-width="100px">
-          <el-select v-model="formData.roleUid" placeholder="请选择活动区域" multiple collapse-tags class="wid20">
+          <el-select v-model="formData.roleUid" placeholder="请选择角色" multiple collapse-tags class="wid20">
             <el-option v-for="(item,index) in jobList" :label="item.roleName" :value="item.uid" :key="'job'+index" ></el-option>
           </el-select>
         </el-form-item>
@@ -281,18 +281,22 @@ export default {
     },
     //编辑
     editUserMange(obj) {
+      let roleId = obj.rmsUserRoleInfos.map(v=>{
+        return v.uid
+      })
+      
       this.addVersionTitle= "编辑用户"
     
       this.addVersionVisible=true
-      this.formData.roleUid = obj.roleUid.split(",")
+      this.formData.roleUid = roleId
       this.formData.uid = obj.uid
       this.formData.userName = obj.userName
-      this.formData.userMobile = obj.contactPhone
+      this.formData.userMobile = obj.userMobile
     },
     onSubmit(){
       let data ={
         "where.keyword":this.formInline.keyword,
-        "where.contactPhone":this.formInline.name,
+        "where.userMobile":this.formInline.name,
         "pageNum":this.pageNum
       }
       this.getUserList(data)
@@ -344,10 +348,11 @@ export default {
     //编辑提交
     async onEditorSava() {
       const {code} = await updateUsersList({
-        "contactPhone": this.formData.userMobile,
-        "roleUid": this.formData.roleUid.toString(),
+        "userMobile": this.formData.userMobile,
+        "roleIds": this.formData.roleUid.toString(),
         "userName": this.formData.userName,
         "uid": this.formData.uid,
+        "proKey":proKey
       })
       if(code==='00000000'){
         this.$message({
@@ -357,7 +362,7 @@ export default {
         this.closed('editForm')
         let data ={
           "where.keyword":this.formInline.keyword || null,
-          "where.contactPhone":this.formInline.name || null,
+          "where.userMobile":this.formInline.name || null,
           "pageNum":this.pageNum,
           "pageSize":this.pageSize
         }
@@ -375,7 +380,7 @@ export default {
       this.pageNum = page;
        let data ={
         "where.keyword":this.formInline.keyword || null,
-        "where.contactPhone":this.formInline.name || null,
+        "where.userMobile":this.formInline.name || null,
         "pageNum":this.pageNum,
         "pageSize":this.pageSize
       }
