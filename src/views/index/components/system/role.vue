@@ -21,20 +21,13 @@
       <div class="common_table" style="margin-top:20px;">
         <el-table class="table-comp" ref="versionTable" :data="orgTableData" tooltip-effect="dark" style="width: 100%">
           <el-table-column  label="序号" type="index"  width="50"></el-table-column>
-          <el-table-column  label="角色名称" prop="roleName" ></el-table-column>
+          <el-table-column  label="单位名称" prop="roleName" ></el-table-column>
           <el-table-column  label="描述" prop="roleDesc" show-overflow-tooltip></el-table-column>
-          <el-table-column  label="创建日期" >
-             <template slot-scope="scope">
-               {{scope.row.createTime | fmTimestamp}}
-            </template>
-          </el-table-column>
           <el-table-column label="操作" width="240" >
             <template slot-scope="scope">
               <span class="operation_btn" @click="seeRole(scope.row)">查看权限</span> 
-              <!-- <span class="operation_btn" @click="updateVersion(scope.row)">编辑</span>  -->
               <span class="operation_btn" @click="controlRole(scope.row)">权限配置</span> 
               <!-- <span class="operation_btn" @click="delItem(scope.row)" v-if="!scope.row.isDefault">删除</span> -->
-              <!-- <span class="operation_btn disabled"  v-else>删除</span> -->
             </template>
           </el-table-column>
         </el-table>
@@ -54,10 +47,10 @@
     <!-- 新增编辑弹框 -->
     <el-dialog :title="addVersionTitle" :visible.sync="addVersionVisible" width="600px" :close-on-click-modal="false">
       <el-form :model="addFormData" ref="addForm" :rules="addRules" label-width="120px">
-        <el-form-item label="角色名称" prop="roleName" >
+        <el-form-item label="单位名称" prop="roleName" >
           <el-input v-model="addFormData.roleName" :maxlength="20" placeholder="请输入单位名称"></el-input>
         </el-form-item>
-        <el-form-item label="角色描述" prop="roleDesc" >
+        <el-form-item label="单位描述" prop="roleDesc" >
           <el-input
             type="textarea"
             :autosize="{ minRows: 4, maxRows: 6}"
@@ -86,7 +79,7 @@ export default {
   data() {
     return {
       permission:JSON.parse(localStorage.getItem("permission")),
-      breadcrumbData: [{ name: "系统管理" },{ name: "角色管理"}],
+      breadcrumbData: [{ name: "系统管理" },{ name: "单位管理"}],
       orgTableData:[],
       keyword:"",
       pageNum: 1,
