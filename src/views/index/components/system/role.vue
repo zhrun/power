@@ -80,6 +80,7 @@
 import visBreadcrumb from "_com/breadcrumb.vue";
 import { getResources,getRoleList, delRole,updateRole,createRole} from '@/views/index/api/system/api.zr.js';
 import { proKey } from '@/config/config.js';
+import { treeData } from "@/utils/util.js";
 export default {
   components: { visBreadcrumb },
   data() {
@@ -118,14 +119,7 @@ export default {
     this.getResources()
   },
   methods: {
-    treeData(data) {
-        let cloneData = JSON.parse(JSON.stringify(data))
-        return cloneData.filter(parent => {  //AREA_CODE 代表id   PID代表 父级 pid
-            let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
-            branchArr.length > 0 ? parent['children'] = branchArr : '';
-            return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
-        })
-    },
+ 
     getResources(){
       this.allLimitObj.A = [];
       this.allLimitObj.B = [];
@@ -138,7 +132,7 @@ export default {
         if (res) {
             this.limitDataList = res.data;
             // console.log('data', res.data)
-            this.allLimitObj.A=this.treeData(this.limitDataList)
+            this.allLimitObj.A=treeData(this.limitDataList)
             // console.log(this.allLimitObj.A)
           }
       })

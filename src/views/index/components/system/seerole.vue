@@ -39,6 +39,7 @@
 import visBreadcrumb from "_com/breadcrumb.vue";
 import { getroleAuthBatch,getResources} from '@/views/index/api/system/api.zr.js';
 import { proKey } from '@/config/config.js';
+import { treeData } from "@/utils/util.js";
 export default {
   components: { visBreadcrumb },
   data() {
@@ -88,14 +89,7 @@ export default {
         }
       })
     },
-    treeData(data) {
-        let cloneData = JSON.parse(JSON.stringify(data))
-        return cloneData.filter(parent => {  //AREA_CODE 代表id   PID代表 父级 pid
-            let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
-            branchArr.length > 0 ? parent['children'] = branchArr : '';
-            return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
-        })
-    },
+ 
     //初始化数据 
     onSeeLimit (obj) { // 查看权限
       //  console.log(obj, 111)
@@ -104,7 +98,7 @@ export default {
       this.seeLimitObj.C = [];
       this.seeLimitObj.D = [];
       this.seeLimitObj.E = [];
-       this.seeLimitObj.A=this.treeData(obj.roleAuthList)
+       this.seeLimitObj.A=treeData(obj.roleAuthList)
       // this.seeLimitItem = Object.assign({}, obj);
       // obj.roleAuthList.forEach(item => {
       //   if (item.resourceLayer == 2) {

@@ -158,6 +158,7 @@
 import visBreadcrumb from "_com/breadcrumb.vue";
 import { getResources,createResources,updateResources,delResources} from '@/views/index/api/system/api.zr.js';
 import { proKey } from '@/config/config.js';
+import { treeData } from "@/utils/util.js";
 // import {resouceData} from '@/config/data.js';
 export default {
   components: { visBreadcrumb },
@@ -306,15 +307,7 @@ export default {
         });
       
     },
-    treeData(data) {
-        let cloneData = JSON.parse(JSON.stringify(data))
-        return cloneData.filter(parent => {  //AREA_CODE 代表id   PID代表 父级 pid
-            let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
-            branchArr.length > 0 ? parent['children'] = branchArr : '';
-            return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
-            // return parent['resourceName'] == "根节点"
-        })
-    },
+   
     getAuthorityList () { // 获取权限列表
       
       this.allLimitObj.B = [];
@@ -328,7 +321,7 @@ export default {
           this.allLimitObj.A = [];
             this.limitDataList = res.data;
             
-            this.allLimitObj.A=this.treeData(this.limitDataList)
+            this.allLimitObj.A=treeData(this.limitDataList)
             console.log(this.allLimitObj.A)
           }
       }).catch(() => {})

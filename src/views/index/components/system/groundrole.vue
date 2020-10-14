@@ -52,6 +52,7 @@
 import visBreadcrumb from "_com/breadcrumb.vue";
 import { getRoleResources,roleAuthBatch,getroleAuthBatch,getResources} from '@/views/index/api/system/api.zr.js';
 import { proKey } from '@/config/config.js';
+import { treeData } from "@/utils/util.js";
 export default {
   components: { visBreadcrumb },
   data() {
@@ -232,15 +233,7 @@ export default {
         this.checkAll = false;
       }
     },
-    treeData(data) {
-        let cloneData = JSON.parse(JSON.stringify(data))
-        return cloneData.filter(parent => {  //AREA_CODE 代表id   PID代表 父级 pid
-            let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
-            branchArr.length > 0 ? parent['children'] = branchArr : '';
-            return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
-            // return parent['resourceName'] == "根节点"
-        })
-    },
+  
     //初始化数据 
     getResources(){
       this.allLimitObj.A = [];
@@ -256,7 +249,7 @@ export default {
                 this.allPermissions.push(item.uid);
               }
             })
-             this.allLimitObj.A=this.treeData(res.data)
+             this.allLimitObj.A=treeData(res.data)
             // console.log(this.allLimitObj.A)
             
           }
