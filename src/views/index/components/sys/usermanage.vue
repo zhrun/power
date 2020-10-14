@@ -8,31 +8,32 @@
   <visBreadcrumb :breadcrumb-data="breadcrumbData"></visBreadcrumb>
   <div class="common_content">
     <el-scrollbar style="height:100%;">
-      <el-form :inline="true">
-        <el-form-item label="">
-          <el-input type="text" v-model.trim="queryInfo" placeholder="用户名/姓名"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="queryForm">查询</el-button>
-          <el-button @click="resetForm">重置</el-button>
-        </el-form-item>
-      </el-form>
+      <div class="bw-form">
+        <el-form :inline="true">
+          <el-form-item label="姓名">
+            <el-input type="text" v-model.trim="userName" placeholder="用户姓名" style="width:300px"></el-input>
+          </el-form-item>
+          <el-form-item label="手机号">
+            <el-input type="text" v-model.trim="userMobile" placeholder="用户手机号" style="width:300px"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="geAuthServicesUsers">查询</el-button>
+            <el-button @click="resetForm">重置</el-button>
+          </el-form-item>
+        </el-form>
+        <el-button type="primary" @click="addUser">新增</el-button>
+      </div>
       <div class="common_table">
         <el-table :data="commonList" tooltip-effect="dark" style="width: 100%" v-loading="tableLoading">
           <el-table-column label="序号" type="index" width="70"></el-table-column>
-          <el-table-column label="用户姓名" prop="com"></el-table-column>
-          <el-table-column label="手机号" prop="com"></el-table-column>
-          <el-table-column label="所属单位" prop="com"></el-table-column>
-          <el-table-column label="角色" prop="com"></el-table-column>
-          <el-table-column label="岗位" prop="com"></el-table-column>
-          <el-table-column label="创建日期" prop="com"></el-table-column>
-          <el-table-column label="最近登录时间" prop="com"></el-table-column>
-          <el-table-column label="状态" prop="com"></el-table-column>
+          <el-table-column label="姓名" prop="userName"></el-table-column>
+          <el-table-column label="手机号" prop="userMobile"></el-table-column>
+          <el-table-column label="角色" prop="roleName"></el-table-column>
           <el-table-column label="操作" width="180" fixed="right">
             <template slot-scope="scope">
-              <span class="operation_btn">编辑</span>
-              <span class="operation_btn">重置密码</span>
-              <span class="operation_btn" @click="lookDetail(scope.row)">删除</span>
+              <span class="operation_btn" @click="editUser(scope.row)">编辑</span>
+              <span class="operation_btn" @click="resetPassword(scope.row)">重置密码</span>
+              <span class="operation_btn" @click="delUser(scope.row)">删除</span>
             </template>
           </el-table-column>
         </el-table>
@@ -45,13 +46,16 @@
 </template>
 <script>
 import visBreadcrumb from "_com/breadcrumb.vue"
-import { getauthUserRoles } from "@/views/index/api/power/api.ps.js";
+import { formatDate } from "@/utils/util.js";
+import { geAuthServicesUsers } from "@/views/index/api/power/api.ps.js";
 export default {
   components: { visBreadcrumb },
   data() {
     return {
-      breadcrumbData: [{ name: "系统管理" }, { name: "用户管理" }],
-      queryInfo:"",
+      breadcrumbData: [{ name: "系统管理" }, { name: "角色管理" }],
+      proKey:null,
+      userName:null,
+      userMobile:null,
       commonList:[{com:"123"}],
       tableLoading:false,
       pageNum:1,
@@ -60,25 +64,48 @@ export default {
     };
   },
   mounted() {
-    this.getauthUserRoles()
+    this.proKey = JSON.parse(localStorage.getItem("vis_user_info")).proKey;
+    this.geAuthServicesUsers()
   },
   methods: {    
-    getauthUserRoles(){
+    geAuthServicesUsers(){
       let that=this
       that.tableLoading=true
       that.commonList=[]
-      getauthUserRoles().then((res)=>{
+      let params={
+        "where.keyWord":this.userName,
+        "where.userMobile":this.userMobile,
+        "where.proKey":this.proKey
+      }
+      geAuthServicesUsers(params).then((res)=>{
         that.tableLoading=false
-        console.log("res=>", res)
+        that.commonList=res.data.list
+        that.commonList.map((item)=>{
+          item.userName=item.userName || "-"
+          item.userMobile=item.userMobile || "-"
+          item.roleName=item.rmsUserRoleInfos[0].roleName || "-"
+        })
       }).catch((error)=>{
         that.tableLoading=false
         console.log("接口报错=>",error)
       })
     },
-    queryForm(){
+    resetForm(){
+      this.pageNum=1
+      this.userName=null
+      this.userMobile=null
+      this.geAuthServicesUsers()
+    },
+    addUser(){
 
     },
-    resetForm(){
+    editUser(obj){
+
+    },
+    resetPassword(obj){
+
+    },
+    delUser(obj){
 
     },
     onPageChange(){
@@ -88,5 +115,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
+.bw-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 </style>

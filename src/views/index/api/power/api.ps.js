@@ -2,10 +2,10 @@ import request from "@/config/axios";
 
 
 /**
- * getauthUserRoles 所有物资装备分页列表
+ * getAuthUserRoles 角色分页查询接口
  * @param { data }
  */
-export const getauthUserRoles = (data) => {
+export const getAuthUserRoles = (data) => {
   return request({
     url: "/auth/authServices/userRoles",
     method: "GET",
@@ -13,3 +13,33 @@ export const getauthUserRoles = (data) => {
     params: data
   })
 };
+
+/**
+ * geAuthServicesUsers 用户分页查询接口
+ * @param { data }
+ */
+export const geAuthServicesUsers = (data) => {
+  return request({
+    url: "/auth/authServices/users",
+    method: "GET",
+    mode: "rms",
+    params: data
+  })
+};
+
+/**
+ * postUserRole 角色新增接口
+ * @param { data }
+ */
+export const postUserRole = (data) => {
+  return request({
+    url: "/auth/authServices/userRole",
+    method: "POST",
+    mode: "rms",
+    data,
+  })
+};
+
+
+
+

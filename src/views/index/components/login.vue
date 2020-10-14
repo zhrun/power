@@ -476,6 +476,7 @@ export default {
 				// const { code, data } = this.resourceData;
 				if (code === '00000000') {
 					//判断当前登录用户 所属单位是否是最顶级 以级是否是最下级
+					localStorage.setItem('systemCode', data[0].systemCode)
 					let newJson = []
 					//没有下级
 					let noLower = [
