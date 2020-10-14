@@ -475,7 +475,7 @@ export default {
     height: 168px;
     background: url("../assets/img/bg-bottom.png") left no-repeat ;
     background-size: contain;
-    z-index: 3;
+    z-index: 0;
   }
   background-image: url("../assets/img/bg-top.png");
   background-size: 300px 110px, 300px 160px;
