@@ -100,6 +100,7 @@ export default {
       }
       getAuthUserRoles(params).then((res)=>{
         that.tableLoading=false
+        that.total=res.data.total
         that.commonList=res.data.list
         that.commonList.map((item)=>{
           item.roleName=item.roleName || "-"
@@ -134,11 +135,20 @@ export default {
       const that=this
       that.$refs.addForm.validate((valid) => {
         if(valid){
+          that.versionLoading=true
           let params={}
           params.roleName=that.addFormData.roleName
           params.roleDesc=that.addFormData.roleDesc
           params.proKey=that.proKey
           params.systemCode=localStorage.getItem('systemCode') || null
+          postUserRole(params).then((res)=>{
+            that.versionLoading=false
+            that.addVersionVisible=false
+            that.getAuthUserRoles()
+          }).catch((error)=>{
+            that.versionLoading=false
+            console.log("接口报错=>",error)
+          })
         }
       })
     },
