@@ -58,7 +58,14 @@ export default  [
     name: "systempermission",
     component: () => import('@/views/index/components/system/permission.vue'),
   },
-  
+  {
+    path: "/sys/jurismanage/unitGroup", //角色配置权限
+    name: "unitGroup",
+    meta: {
+      father: "jurismanage",
+    },
+    component: () => import('@/views/index/components/sys/unitGroup.vue'),
+  },
 
 ]
 
