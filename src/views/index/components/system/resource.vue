@@ -350,7 +350,7 @@ export default {
       this.isShowError = false;
       this.errorMsg = '';
       this.editLimitItem = Object.assign({}, obj);
-      this.editLimitItem.platformType = obj.platformType.split(",")
+      this.editLimitItem.platformType = obj.platformType?obj.platformType.split(","):[]
     },
     onDeleteLimit (obj) { // 删除权限
       this.deleteItem = Object.assign({}, obj);
