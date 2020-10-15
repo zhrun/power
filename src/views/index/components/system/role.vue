@@ -31,7 +31,7 @@
           <el-table-column label="操作" width="240" >
             <template slot-scope="scope">
               <span class="operation_btn" @click="seeRole(scope.row)">查看权限</span> 
-              <!-- <span class="operation_btn" @click="updateVersion(scope.row)">编辑</span>  -->
+              <span class="operation_btn" @click="updateVersion(scope.row)">编辑</span> 
               <span class="operation_btn" @click="controlRole(scope.row)">权限配置</span> 
               <!-- <span class="operation_btn" @click="delItem(scope.row)" v-if="!scope.row.isDefault">删除</span> -->
               <!-- <span class="operation_btn disabled"  v-else>删除</span> -->
@@ -56,6 +56,11 @@
       <el-form :model="addFormData" ref="addForm" :rules="addRules" label-width="120px">
         <el-form-item label="角色名称" prop="roleName" >
           <el-input v-model="addFormData.roleName" :maxlength="20" placeholder="请输入单位名称"></el-input>
+        </el-form-item>
+        <el-form-item label="所属系统">
+          <el-select v-model="addFormData.systemCode" placeholder="请选择子系统">
+            <el-option v-for="item in allLimitObj.A" :label="item.resourceName" :value="item.systemCode"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="角色描述" prop="roleDesc" >
           <el-input
@@ -122,10 +127,6 @@ export default {
  
     getResources(){
       this.allLimitObj.A = [];
-      this.allLimitObj.B = [];
-      this.allLimitObj.C = [];
-      this.allLimitObj.D = [];
-      this.allLimitObj.E = [];
       getResources({
          proKey :this.proKey
       }).then(res=>{
@@ -133,7 +134,7 @@ export default {
             this.limitDataList = res.data;
             // console.log('data', res.data)
             this.allLimitObj.A=treeData(this.limitDataList)
-            // console.log(this.allLimitObj.A)
+            console.log(this.allLimitObj.A)
           }
       })
     },
@@ -196,7 +197,8 @@ export default {
         roleName:obj.roleName,
         proKey:this.proKey,
         roleDesc:obj.roleDesc,
-        uid:obj.uid
+        uid:obj.uid,
+        systemCode:obj.systemCode
       }
     },
     //删除

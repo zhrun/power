@@ -295,8 +295,8 @@ export default {
     },
     onSubmit(){
       let data ={
-        "where.keyword":this.formInline.keyword,
-        "where.userMobile":this.formInline.name,
+        "where.userName":this.formInline.keyword || null,
+        "where.userMobile":this.formInline.name || null,
         "pageNum":this.pageNum
       }
       this.getUserList(data)
@@ -361,7 +361,7 @@ export default {
         });
         this.closed('editForm')
         let data ={
-          "where.keyword":this.formInline.keyword || null,
+          "where.userName":this.formInline.keyword || null,
           "where.userMobile":this.formInline.name || null,
           "pageNum":this.pageNum,
           "pageSize":this.pageSize
@@ -379,7 +379,7 @@ export default {
     onPageChange(page) {
       this.pageNum = page;
        let data ={
-        "where.keyword":this.formInline.keyword || null,
+        "where.userName":this.formInline.keyword || null,
         "where.userMobile":this.formInline.name || null,
         "pageNum":this.pageNum,
         "pageSize":this.pageSize
