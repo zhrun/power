@@ -686,11 +686,18 @@ export const accMul = (arg1, arg2, fix) => {
 }
 
 export const treeData=  (data)=> {
+	let a = data.filter(o=>o.resourceLayer==1)
+	let level = 1
+	if(a && a.length>0){
+		level = 1
+	}else{
+		level = 2
+	}
 	let cloneData = JSON.parse(JSON.stringify(data))
 	return cloneData.filter(parent => {  //uid 代表id   parentUid代表父级 id
 		let branchArr = cloneData.filter(child => parent['uid'] == child['parentUid']);
 		branchArr.length > 0 ? parent['children'] = branchArr : '';
 		// return (parent['parentUid'] == '4TvGVMAQo5VQqPN3tQvgFW' && parent['uid']!='4TvGVMAQo5VQqPN3tQvgFW');
-		return parent['resourceLayer'] == 1
+		return parent['resourceLayer'] == level
 	})
   }
