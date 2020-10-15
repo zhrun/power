@@ -100,7 +100,7 @@
 import visBreadcrumb from "_com/breadcrumb.vue";
 // import { checkVersion } from '@/utils/validator.js';
 import { checkUserRename, getJoblist,resetPwd } from "@/views/index/api/supplies/api.zr.js";
-import { queryUsersList,createUsers,updateUsersList} from '@/views/index/api/system/api.zr.js';
+import { queryUsersList,createUsers,updateUsersList,delUsers} from '@/views/index/api/system/api.zr.js';
 import resetPsdDialog from "@/components/common/resetPsdDialog";
 import { getPublicKey } from "@/views/index/api/eas/api.eas.js";
 import { proKey } from '@/config/config.js';
@@ -225,7 +225,28 @@ export default {
       this.changeObj = obj
       this.showResetPsdDialog = true;
     },
-  
+    deleleItem(obj){
+      this.$confirm('确认删除？')
+          .then(() => {
+            delUsers({
+              uid:obj.uid,
+              proKey :proKey
+            }).then(res=>{
+              if(res && res.code=="00000000"){
+                // console.log('res=》',res);
+                this.$message({
+                  type:"success",
+                  message:"删除成功"
+                })
+                this.getUserList();
+              }
+            })
+          })
+          .catch(() => {
+            console.log('取消删除');
+            
+          });
+    },
     showAdd() {
       this.addVersionVisible = true
       this.addVersionTitle= "新增用户"

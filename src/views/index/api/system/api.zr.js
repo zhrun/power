@@ -170,7 +170,17 @@ export function updateUsersList (data) {
     method: 'put'
   });
 }
-
+/**
+ * 删除用户
+ * @param {*} data
+ */
+export function delUsers (data) {
+  return request({
+    url: '/authServices/user/'+data.uid+"?proKey="+data.proKey,
+    mode: 'auth',
+    method: 'delete'
+  });
+}
 /**
  * 获取用户列表数据
  * @param {*} data

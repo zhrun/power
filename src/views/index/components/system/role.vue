@@ -33,7 +33,7 @@
               <span class="operation_btn" @click="seeRole(scope.row)">查看权限</span> 
               <span class="operation_btn" @click="updateVersion(scope.row)">编辑</span> 
               <span class="operation_btn" @click="controlRole(scope.row)">权限配置</span> 
-              <!-- <span class="operation_btn" @click="delItem(scope.row)" v-if="!scope.row.isDefault">删除</span> -->
+              <span class="operation_btn" @click="delItem(scope.row)" v-if="!scope.row.isDefault">删除</span>
               <!-- <span class="operation_btn disabled"  v-else>删除</span> -->
             </template>
           </el-table-column>
