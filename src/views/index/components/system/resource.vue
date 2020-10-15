@@ -31,7 +31,6 @@
                 <el-tree
                 :data="allLimitObj.A"
                 node-key="uid"
-                default-expand-all
                 :props="defaultProps"
                 :expand-on-click-node="false">
                 <span class="custom-tree-node" slot-scope="{ node, data }">
@@ -77,9 +76,9 @@
           </el-form-item>
           <el-form-item label="登录端" label-width='85px' prop="platformType">
             <el-checkbox-group v-model="addForm.platformType">
-              <el-checkbox :label="1">web普通用户</el-checkbox>
-              <el-checkbox  :label="2">web管理员</el-checkbox>
-              <el-checkbox  :label="3">app端</el-checkbox>
+              <el-checkbox label="1">web普通用户</el-checkbox>
+              <el-checkbox label="2">web管理员</el-checkbox>
+              <el-checkbox label="3">app端</el-checkbox>
             </el-checkbox-group>
           </el-form-item>
 
@@ -116,14 +115,17 @@
            <el-form-item label="路由名称" label-width='85px' prop="routeName">
             <el-input type="text" v-model="editLimitItem.routeName" placeholder='请输入路由名称' style='width: 98%'></el-input>
           </el-form-item>
+          <el-form-item label="系统CODE" label-width='85px' prop="systemCode">
+            <el-input type="text" v-model="editLimitItem.systemCode" placeholder='请输入路由名称' style='width: 98%'></el-input>
+          </el-form-item>
           <el-form-item label="样式名称" label-width='85px' prop="style">
             <el-input type="text" v-model="editLimitItem.style" placeholder='请输入路由名称' style='width: 98%'></el-input>
           </el-form-item>
-           <el-form-item label="登录端" label-width='85px' prop="platformType">
+           <el-form-item label="登录端" label-width='85px' >
             <el-checkbox-group v-model="editLimitItem.platformType">
-              <el-checkbox :label="1">web普通用户</el-checkbox>
-              <el-checkbox  :label="2">web管理员</el-checkbox>
-              <el-checkbox  :label="3">app端</el-checkbox>
+              <el-checkbox label="1">web普通用户</el-checkbox>
+              <el-checkbox  label="2">web管理员</el-checkbox>
+              <el-checkbox  label="3">app端</el-checkbox>
             </el-checkbox-group>
           </el-form-item>
           <el-form-item label-width='85px' v-show="isShowError">
@@ -193,7 +195,8 @@ export default {
         style: '',
         parentUid: null,
         routeName:'',
-        platformType:[]
+        platformType:[],
+        systemCode:null
       },
       isShowError: false,
       errorMsg: '',
@@ -258,6 +261,7 @@ export default {
               style: this.editLimitItem.style,
               uid: this.editLimitItem.uid,
               proKey:this.proKey,
+              systemCode:this.editLimitItem.systemCode || null,
               routeName:this.editLimitItem.routeName,
               platformType:this.editLimitItem.platformType.toString()
             }
@@ -346,6 +350,7 @@ export default {
       this.isShowError = false;
       this.errorMsg = '';
       this.editLimitItem = Object.assign({}, obj);
+      this.editLimitItem.platformType = obj.platformType.split(",")
     },
     onDeleteLimit (obj) { // 删除权限
       this.deleteItem = Object.assign({}, obj);
