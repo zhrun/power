@@ -31,7 +31,6 @@
                 <el-tree
                 :data="allLimitObj.A"
                 node-key="uid"
-                default-expand-all
                 :props="defaultProps"
                 :expand-on-click-node="false">
                 <span class="custom-tree-node" slot-scope="{ node, data }">

@@ -21,6 +21,24 @@ export default [
         },
         component: () => import('@/views/index/components/sys/rolemanage.vue'),
     },
+    // 系统管理>角色管理>权限配置
+    {
+        path: "distPower",
+        name: "distPower",
+        meta: {
+          father: 'rolemanage'
+        },
+        component: () => import('@/views/index/components/sys/distPower.vue'),
+    },
+    // 系统管理>角色管理>查看权限
+    {
+        path: "lookPower",
+        name: "lookPower",
+        meta: {
+          father: 'rolemanage'
+        },
+        component: () => import('@/views/index/components/sys/lookPower.vue'),
+    },
     // 系统管理>用户组管理
     {
         path: "userground",

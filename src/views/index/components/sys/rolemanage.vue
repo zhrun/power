@@ -123,10 +123,10 @@ export default {
       this.addVersionVisible=true
     },
     lookPower(obj){
-
+      this.$router.push({name:'lookPower', params: { uid: obj.uid,name:obj.roleName,desc:obj.roleDesc }})
     },
     disPower(obj){
-
+      this.$router.push({name:'distPower', params: { uid: obj.uid,name:obj.roleName,desc:obj.roleDesc  }})
     },
     onCancle(){
       this.addVersionVisible=false
