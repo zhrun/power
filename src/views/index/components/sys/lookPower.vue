@@ -19,7 +19,7 @@
         </el-scrollbar>
       </div>
       <div style="text-align: center">
-        <el-button type="primary" @click="callBack" class="back-btn">返 回</el-button>
+        <el-button @click="callBack" class="back-btn">返 回</el-button>
       </div>
     </div>
   </div>

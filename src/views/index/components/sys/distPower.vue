@@ -208,6 +208,7 @@ export default {
       this.allLimitObj.A = [];
       getResources({
         proKey: this.proKey,
+        groupId:"resource"
       }).then((res) => {
         if (res) {
           this.parentList = res.data;
