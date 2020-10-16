@@ -6,7 +6,7 @@
       <div class="boxBoder">
          <el-input placeholder="角色名称" v-model="keyword" class="input-with-select" style="width:400px;">
          
-            <el-button slot="append" icon="el-icon-search" @click="getRoleList"></el-button>
+            <el-button slot="append" icon="el-icon-search" @click="getResourceGroups"></el-button>
           </el-input>
           <el-button type="primary" @click="addUnitGroup" style="margin-left:20px;" >添加权限组</el-button>
       </div>
@@ -76,7 +76,9 @@
 </template>
 <script>
 import visBreadcrumb from "_com/breadcrumb.vue";
-import { getResources,getRoleList, delRole,updateRole,createRole} from '@/views/index/api/system/api.zr.js';
+import { getResources,delRole,updateRole,createRole} from '@/views/index/api/system/api.zr.js';
+import { getResourceGroups } from '@/views/index/api/system/api.xy.js';
+
 import { proKey } from '@/config/config.js';
 import { treeData } from "@/utils/util.js";
 export default {
@@ -113,7 +115,7 @@ export default {
   },
   mounted() {
     
-    // this.getRoleList()
+    this.getResourceGroups()
     this.getResources()
   },
   methods: {
@@ -139,14 +141,15 @@ export default {
     },
     
     //初始化数据 
-    getRoleList(){
+    getResourceGroups(){
        let d={
           "where.proKey":this.proKey,
           "pageNum":this.pageNum,
-          "where.roleName":this.keyword,
+          "where.systemCode":localStorage.getItem('systemCode'),
+          "where.groupName":this.keyword,
         }
       
-      getRoleList(d).then(res=>{
+      getResourceGroups(d).then(res=>{
         if(res && res.data){
           //  console.log('res',res);
           if(this.terminalType == 3 || this.terminalType==4){
@@ -207,7 +210,7 @@ export default {
                     type:"success",
                     message:"角色删除成功"
                   })
-                  this.getRoleList()
+                  this.getResourceGroups()
                 }
               })
           })
@@ -239,7 +242,7 @@ export default {
     //               type:"success",
     //               message:"新增角色成功"
     //             })
-    //             this.getRoleList()
+    //             this.getResourceGroups()
     //             this.addVersionVisible=false
     //           }
     //         })
@@ -250,7 +253,7 @@ export default {
     //               type:"success",
     //               message:"修改角色成功"
     //             })
-    //             this.getRoleList()
+    //             this.getResourceGroups()
     //             this.addVersionVisible=false
     //           }
     //         })
@@ -263,7 +266,7 @@ export default {
     /* 表格分页方法 */
     onPageChange(page) {
       this.pageNum = page;
-      this.getRoleList();
+      this.getResourceGroups();
     },
     handleSizeChange(val) {
       this.pageNum = 1;

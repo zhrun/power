@@ -102,7 +102,8 @@ export default {
       let d = {
         "authResourceInfoList": [],
         "proKey": this.proKey,
-        "uid": this.$route.params.uid,
+        "uid": JSON.parse(localStorage.getItem('vis_user_info')).uid,
+        "systemCode":localStorage.getItem('systemCode'),
         "groupName":this.groupName,
       }
       d.authResourceInfoList = addKeys.concat(delKeys)

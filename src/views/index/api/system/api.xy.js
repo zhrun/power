@@ -49,3 +49,12 @@ export function addGroup (data) {
     method: 'post'
   });
 }
+export const getResourceGroups = (params) => {
+  return request({
+    url: "/resourceGroupServices/resourceGroups",
+    method: "GET",
+    mode: "auth",
+    params: params,
+  });
+};
+
